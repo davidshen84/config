@@ -41,5 +41,9 @@
 ;; `EasyPG'
 (require 'epa-file)
 
+(use-package clipetty
+  :ensure t
+  :config (global-clipetty-mode))
+
 (provide 'common)
 ;;; common.el ends here
