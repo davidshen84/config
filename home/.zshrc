@@ -14,9 +14,9 @@ plugins=(
     kubectl
     kubectx
     ng
+    pass
     systemd
     themes
-    tmux
     ufw
     uv
     z
@@ -41,11 +41,19 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=* r:|=*' 'l:|=* r
 
 ZSH_THEME="agnoster"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
+HIST_STAMPS="yyyy-mm-dd"
+HISTSIZE=50000
+SAVEHIST=50000
+
 source $ZSH/oh-my-zsh.sh
 
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
+# History configuration
+setopt HIST_IGNORE_ALL_DUPS  # Keep only the latest entry if a command is repeated
+setopt HIST_SAVE_NO_DUPS     # Don't write duplicates to the history file
+setopt HIST_FIND_NO_DUPS     # Don't display duplicates when searching history
+setopt HIST_REDUCE_BLANKS    # Remove superfluous whitespace
+setopt HIST_IGNORE_SPACE     # Ignore commands starting with a space
+setopt HIST_NO_STORE         # Don't save the 'history' command itself
 
 alias cat="bat"
 
