@@ -9,8 +9,16 @@
 
 (use-package pinentry
   :ensure t
+  :init
+  (pinentry-start)
   :custom
   (epa-pinentry-mode 'loopback))
+
+(use-package tramp
+  :config
+  (when (executable-find "gpgconf")
+    (setenv "SSH_AUTH_SOCK"
+            (string-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))))
 
 (use-package ediff
   :custom
